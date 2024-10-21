@@ -23,8 +23,8 @@ model.fit = input_train,output_train
 model2 = Ridge(alpha=1.0)
 model2.fit = input_train,output_train
 
-output_prediction = model.predict(input_test)
-output1_prediction = model2.predict(input_test)
+output_prediction = model.predict(input_train)
+output1_prediction = model2.predict(input_train)
 
 print(root_mean_squared_error(output_test,output_prediction))
 print(root_mean_squared_error(output_test,output1_prediction))
