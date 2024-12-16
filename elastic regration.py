@@ -28,5 +28,5 @@ print(y_test.shape)
 
 plt.scatter(x_test[:,0],y_test,color="blue")
 plt.scatter(x_test[:,0],y_predict,color='red')
-plt.scatter(y_test,y_predict,color='green')
+#plt.scatter(y_test,y_predict,color='green')
 plt.show()
