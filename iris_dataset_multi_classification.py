@@ -34,4 +34,5 @@ for i in range(3):
 
 
 plt.title('iris dataset')
+plt.legend()
 plt.show()
