@@ -34,8 +34,7 @@ print(labels)
 unique_labesl = set(labels)
 print(unique_labesl)
 
-
-
+#plt now
 print(X.shape)   # (660, 4)
 plt.scatter(X[:,0],X[:,3],c=labels,cmap='rainbow')
 
