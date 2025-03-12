@@ -7,9 +7,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_wine,load_diabetes,load_iris
 import pandas as pd
 
-# Load the dataset
-# wine = load_wine()
-# print(wine.DESCR)
+#Load the dataset
+wine = load_wine()
+print(wine.DESCR)
 diabetes = load_diabetes()
 df = pd.DataFrame(diabetes.data,columns=diabetes.feature_name)
 print(df.head())

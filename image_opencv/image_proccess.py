@@ -1,8 +1,8 @@
-import os 
+import os
 import cv2
-import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -22,7 +22,7 @@ def img_info(folder):
 
                     modelimage = cv2.imread(os.path.join(folder,subfolder,img))
 
-                if modelimage is not None: 
+                if modelimage is not None:
                     try:
                         modelimage = cv2.resize(modelimage,(100,100))
                         modelimage = modelimage.flatten()
@@ -37,7 +37,7 @@ def img_info(folder):
 
     return images,labels
 
-images,labels = img_info("/Users/adityasoni234/Desktop/animals")
+images,labels = img_info("/Users/adityasoni234/Desktop/archive-2 2/animals/animals")
 print(images)
 print(labels)
 
@@ -70,13 +70,13 @@ plot_images(X_test,y_test,y_pred)
 modelImage = cv2.imread("/Users/adityasoni234/Desktop/animals/butterfly/1c1de9b3a2.jpg")
 
 if modelImage is not None:
-     modelImage = cv2.resize(modelImage,(100,100))
-     modelImage = modelImage.flatten()
-     modelImage = modelImage.reshape(1, -1)  # Reshape for single prediction
-     y_pred = knn.predict(modelImage)
-     print(y_pred)
+    modelImage = cv2.resize(modelImage,(100,100))
+    modelImage = modelImage.flatten()
+    modelImage = modelImage.reshape(1, -1)  # Reshape for single prediction
+    y_pred = knn.predict(modelImage)
+    print(y_pred)
 else:
-     print("Error: Could not load the image. Please check if the file path is correct.")
+    print("Error: Could not load the image. Please check if the file path is correct.")
 
 
 

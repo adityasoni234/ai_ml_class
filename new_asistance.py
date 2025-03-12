@@ -13,18 +13,22 @@ def recognize_speech():
     with sr.Microphone() as source:
         print("Listening...")
         recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
-    
-    try:
-        command = recognizer.recognize_google(audio).lower()
-        print(f"You said: {command}")
-        return command
-    except sr.UnknownValueError:
-        speak("Sorry, I didn't understand that. Please try again.")
-        return None
-    except sr.RequestError:
-        speak("There seems to be an issue with the speech recognition service.")
-        return None
+        try:
+            audio = recognizer.listen(source, timeout=5)
+            command = recognizer.recognize_google(audio).lower()
+            print(f"You said: {command}")
+            return command
+        except sr.UnknownValueError:
+            speak("Sorry, I didn't understand that. Please try again.")
+        except sr.RequestError:
+            speak("There seems to be an issue with the speech recognition service.")
+        except sr.WaitTimeoutError:
+            speak("I didn't hear anything. Try speaking again.")
+    return None
+
+def get_input():
+    command = input("Type your command: ").lower()
+    return command
 
 def open_website_or_app(command):
     websites = {
@@ -60,11 +64,15 @@ def open_website_or_app(command):
 def main():
     speak("Hello, I am your voice assistant. How can I help you today?")
     while True:
+        print("Say something or type your command:")
         command = recognize_speech()
+        if not command:
+            command = get_input()
+        
         if command:
             if "hello" in command or "hey" in command:
                 speak("Hello! How can I assist you?")
-            elif "how are you" in command:
+            elif "how r u" in command:
                 speak("I am just a program, but I'm doing great! How about you?")
             elif "who are you" in command:
                 speak("I am your personal voice assistant, here to help you.")
